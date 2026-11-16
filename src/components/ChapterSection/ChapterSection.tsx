@@ -6,8 +6,6 @@ import { StickerSlot } from '../DecorativeSticker/StickerSlot'
 
 interface ChapterSectionProps {
   id: string
-  numeral?: string
-  label?: string
   title: string
   subtitle?: string
   intro?: string
@@ -20,8 +18,6 @@ interface ChapterSectionProps {
 /** Contenedor común de capítulo: encabezado tipo diario + contenido. */
 export function ChapterSection({
   id,
-  numeral,
-  label,
   title,
   subtitle,
   intro,
@@ -40,18 +36,10 @@ export function ChapterSection({
       <StickerSlot section={id as ChapterId} />
       <div className="relative mx-auto max-w-5xl">
         <header className="mx-auto max-w-2xl text-center">
-          {numeral && (
-            <Reveal offset={10}>
-              <p className="chapter-kicker">
-                Capítulo {numeral}
-                {label && <span className="sr-only">: {label}</span>}
-              </p>
-            </Reveal>
-          )}
           <Reveal delay={0.08}>
             <h2
               id={headingId}
-              className="mt-4 text-[2.5rem] leading-[1.05] sm:text-6xl md:text-[4.25rem]"
+              className="text-[2.5rem] leading-[1.05] sm:text-6xl md:text-[4.25rem]"
             >
               {title}
             </h2>

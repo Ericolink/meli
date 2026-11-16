@@ -237,8 +237,8 @@ export const decorations: Decoration[] = [
     section: 'final',
     slot: 'message',
     position: { bottom: '3.5rem', right: '-5rem' },
-    // en móvil, a la izquierda: la esquina derecha la ocupa el reproductor
-    mobile: { bottom: '-0.25rem', left: '0.5rem' },
+    // en móvil, a la derecha: la esquina izquierda la ocupa el reproductor
+    mobile: { bottom: '-0.25rem', right: '0.5rem' },
     tier: 'secundario',
     mobileSize: 'xs',
     rotation: -6,

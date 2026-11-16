@@ -100,8 +100,15 @@ vercel.json
 Es un sitio estático (`dist/`).
 
 - **Vercel:** importa el proyecto. Detecta Vite automáticamente (build `npm run build`, salida `dist`). `vercel.json` añade la cabecera `X-Robots-Tag: noindex`.
+- **Netlify — insignia «Powered by Netlify»:** la añade Netlify desde sus servidores (no está en el código). Se desactiva en *Project configuration → General → Powered by Netlify badge*. Se aplica en la siguiente visita, sin volver a desplegar. El reproductor está en la esquina inferior izquierda, así que la insignia (abajo a la derecha) no lo tapa aunque esté activa.
 - **Netlify:** build `npm run build` y carpeta de publicación `dist`. También puedes arrastrar `dist/` a app.netlify.com/drop. `public/_headers` añade `noindex`.
 - **Cloudflare Pages:** framework «Vite», build `npm run build`, salida `dist`. También usa `_headers`.
+
+## iPhone / Safari
+
+- `viewport-fit=cover` y `env(safe-area-inset-*)` en la portada, la pantalla final, el reproductor, la barra de progreso, el modal y los laterales (horizontal).
+- El color de fondo declarado, el `theme-color` y el tono visible del papel coinciden (`--color-papel-base`), para que las barras de Safari continúen el papel sin franjas.
+- La barra de progreso no toca los bordes, para que Safari no la use como color de su barra superior.
 
 ## Privacidad
 

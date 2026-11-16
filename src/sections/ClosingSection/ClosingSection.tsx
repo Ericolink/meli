@@ -11,7 +11,7 @@ export function ClosingSection() {
     <section
       id="final"
       aria-labelledby="final-titulo"
-      className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-6 pb-14 pt-24 text-center"
+      className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-6 pb-[max(6rem,calc(env(safe-area-inset-bottom)+5.5rem))] pt-24 text-center"
     >
       <FallingPetals />
       <StickerSlot section="final" />

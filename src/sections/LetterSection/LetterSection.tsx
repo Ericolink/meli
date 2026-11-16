@@ -5,7 +5,7 @@ import { StickerSlot } from '../../components/DecorativeSticker/StickerSlot'
 
 export function LetterSection() {
   return (
-    <ChapterSection id="carta" numeral="VI" label="La carta final" title={letter.title}>
+    <ChapterSection id="carta" title={letter.title}>
       <FinalLetter
         greeting={letter.greeting}
         paragraphs={letter.paragraphs}

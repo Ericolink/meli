@@ -44,7 +44,7 @@ export function WelcomeSection({ nextId }: WelcomeSectionProps) {
     <section
       id="bienvenida"
       aria-labelledby="bienvenida-titulo"
-      className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-5 pb-16 pt-12 text-center sm:px-8"
+      className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-5 pb-[max(4rem,calc(env(safe-area-inset-bottom)+3rem))] pt-[max(3rem,calc(env(safe-area-inset-top)+1.75rem))] text-center sm:px-8"
     >
       {/* Decoración de esquina */}
       <PressedFlower className="pointer-events-none absolute -left-6 top-6 w-20 -rotate-[24deg] opacity-60 sm:left-6 sm:w-28" />
@@ -104,6 +104,7 @@ export function WelcomeSection({ nextId }: WelcomeSectionProps) {
         <button
           type="button"
           className="btn-ink"
+          data-player-avoid
           onClick={handleButton}
           aria-label={state === 'closed' ? 'Abrir mi regalo: abre el sobre' : 'Comenzar a leer'}
         >
@@ -118,7 +119,7 @@ export function WelcomeSection({ nextId }: WelcomeSectionProps) {
             e.preventDefault()
             scrollToId(nextId)
           }}
-          className="absolute bottom-4 left-1/2 flex min-h-11 min-w-11 -translate-x-1/2 items-center justify-center text-tinta"
+          className="absolute bottom-[max(1rem,calc(env(safe-area-inset-bottom)+0.5rem))] left-1/2 flex min-h-11 min-w-11 -translate-x-1/2 items-center justify-center text-tinta"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}

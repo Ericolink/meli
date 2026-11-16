@@ -104,7 +104,7 @@ export function PhotoModal({ items, activeId, onClose, onChange }: PhotoModalPro
               ref={closeRef}
               type="button"
               onClick={onClose}
-              className="fixed right-3 top-3 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-crema text-cafe shadow-lg transition-colors hover:bg-white sm:right-6 sm:top-6"
+              className="fixed right-[max(0.75rem,calc(env(safe-area-inset-right)+0.5rem))] top-[max(0.75rem,calc(env(safe-area-inset-top)+0.5rem))] z-10 flex h-12 w-12 items-center justify-center rounded-full bg-crema text-cafe shadow-lg transition-colors hover:bg-white sm:right-6 sm:top-6"
               aria-label="Cerrar fotografía"
             >
               <X className="h-5 w-5" strokeWidth={1.8} />

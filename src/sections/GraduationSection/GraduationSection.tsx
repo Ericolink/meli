@@ -8,8 +8,6 @@ export function GraduationSection() {
   return (
     <ChapterSection
       id="logro"
-      numeral="II"
-      label="El logro"
       title={graduation.title}
       subtitle={graduation.subtitle}
       decoration={

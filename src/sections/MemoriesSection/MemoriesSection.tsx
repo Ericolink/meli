@@ -9,8 +9,6 @@ export function MemoriesSection() {
   return (
     <ChapterSection
       id="recuerdos"
-      numeral="III"
-      label="El álbum de recuerdos"
       title={memoriesIntro.title}
       intro={memoriesIntro.text}
       decoration={

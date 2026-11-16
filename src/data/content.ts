@@ -30,15 +30,15 @@ export const music = {
   label: 'música',
 }
 
-/** Capítulos: id del ancla, numeral y nombre corto (indicador de progreso). */
+/** Secciones: id del ancla y nombre corto (índice de navegación de escritorio). */
 export const chapters = [
-  { id: 'bienvenida', numeral: 'I', label: 'La bienvenida' },
-  { id: 'logro', numeral: 'II', label: 'El logro' },
-  { id: 'recuerdos', numeral: 'III', label: 'El álbum de recuerdos' },
-  { id: 'admiro', numeral: 'IV', label: 'Lo que admiro de ti' },
-  { id: 'mundo', numeral: 'V', label: 'Un mundo por descubrir' },
-  { id: 'carta', numeral: 'VI', label: 'La carta final' },
-  { id: 'final', numeral: '', label: 'El comienzo' },
+  { id: 'bienvenida', label: 'La bienvenida' },
+  { id: 'logro', label: 'El logro' },
+  { id: 'recuerdos', label: 'El álbum de recuerdos' },
+  { id: 'admiro', label: 'Lo que admiro de ti' },
+  { id: 'mundo', label: 'Un mundo por descubrir' },
+  { id: 'carta', label: 'La carta final' },
+  { id: 'final', label: 'El comienzo' },
 ] as const
 
 export type ChapterId = (typeof chapters)[number]['id']

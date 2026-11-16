@@ -4,7 +4,6 @@ import { scrollToId } from '../../utils/scroll'
 
 interface Chapter {
   id: string
-  numeral: string
   label: string
 }
 
@@ -18,12 +17,16 @@ export function ProgressIndicator({ chapters }: ProgressIndicatorProps) {
 
   return (
     <>
-      <div className="pointer-events-none fixed inset-x-0 top-0 z-40 h-[3px] bg-beige/40" aria-hidden="true">
-        <motion.div className="h-full origin-left bg-vino/80" style={{ scaleX: progress }} />
+      {/* Línea de tinta separada de los bordes: Safari (iOS 26) no la toma como color de su barra */}
+      <div
+        className="pointer-events-none fixed left-3 right-3 top-[calc(env(safe-area-inset-top)+3px)] z-40 h-[2px] overflow-hidden rounded-full bg-cafe/[0.07]"
+        aria-hidden="true"
+      >
+        <motion.div className="h-full origin-left rounded-full bg-vino/75" style={{ scaleX: progress }} />
       </div>
 
       <nav
-        aria-label="Capítulos"
+        aria-label="Secciones"
         className="fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 md:block lg:right-7"
       >
         <ol className="flex flex-col items-end gap-1">
@@ -41,7 +44,6 @@ export function ProgressIndicator({ chapters }: ProgressIndicatorProps) {
                   className="group flex h-8 items-center gap-3 rounded-full pl-3 pr-1"
                 >
                   <span className="pointer-events-none translate-x-1 whitespace-nowrap font-display text-[0.95rem] italic text-cafe opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100">
-                    {c.numeral ? `${c.numeral} · ` : ''}
                     {c.label}
                   </span>
                   <span

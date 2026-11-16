@@ -7,7 +7,7 @@ import { StickerSlot } from '../../components/DecorativeSticker/StickerSlot'
 
 export function FutureSection() {
   return (
-    <ChapterSection id="mundo" numeral="V" label="Un mundo por descubrir" title={future.title}>
+    <ChapterSection id="mundo" title={future.title}>
       <Reveal offset={30} amount={0.25}>
         <figure className="relative mx-auto mt-14 max-w-4xl md:mt-16">
           <div className="paper-sheet relative rotate-[-0.6deg] p-2 sm:p-3">

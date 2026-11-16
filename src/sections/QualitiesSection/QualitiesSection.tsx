@@ -10,8 +10,6 @@ export function QualitiesSection() {
   return (
     <ChapterSection
       id="admiro"
-      numeral="IV"
-      label="Lo que admiro de ti"
       title={qualities.title}
       intro={qualities.text}
       decoration={

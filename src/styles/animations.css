@@ -1,0 +1,186 @@
+/* Animaciones ambientales: solo transform y opacity. */
+
+@keyframes ink-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(2deg);
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-2.5deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(4px, -3px);
+  }
+}
+
+@keyframes ripple {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scaleX(0.9);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scaleX(1.05);
+  }
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--petal-opacity, 0.7);
+  }
+  50% {
+    transform: translate3d(var(--petal-drift, 30px), 50vh, 0) rotate(160deg);
+  }
+  90% {
+    opacity: var(--petal-opacity, 0.7);
+  }
+  100% {
+    transform: translate3d(calc(var(--petal-drift, 30px) * -0.4), 108vh, 0) rotate(320deg);
+    opacity: 0;
+  }
+}
+
+@keyframes eq {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes swing {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes steam {
+  0% {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  40% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(5px);
+    opacity: 1;
+  }
+}
+
+.ambient {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.ambient--twinkle {
+  animation: twinkle 4.5s ease-in-out infinite;
+}
+.ambient--bob {
+  transform-origin: 50% 100%;
+  animation: bob 5s ease-in-out infinite;
+}
+.ambient--sway {
+  transform-origin: 50% 100%;
+  animation: sway 6s ease-in-out infinite;
+}
+.ambient--drift {
+  animation: drift 9s ease-in-out infinite;
+}
+.ambient--ripple {
+  animation: ripple 5s ease-in-out infinite;
+}
+.ambient--glow {
+  animation: glow 7s ease-in-out infinite;
+}
+.ambient--swing {
+  transform-origin: 50% 0;
+  animation: swing 5s ease-in-out infinite;
+}
+.ambient--steam {
+  animation: steam 3.6s ease-out infinite;
+}
+.ambient--cue {
+  animation: cue 2.4s ease-in-out infinite;
+}
+
+/* Pausa la animación ambiental cuando la sección no está visible */
+.is-paused .ambient,
+.is-paused .petal {
+  animation-play-state: paused;
+}
+
+.petal {
+  position: absolute;
+  top: 0;
+  will-change: transform;
+  animation: petal-fall var(--petal-duration, 14s) linear var(--petal-delay, 0s) infinite;
+  opacity: 0;
+}

@@ -4,6 +4,7 @@ import { Reveal } from '../../components/Reveal/Reveal'
 import { closing, site } from '../../data/content'
 import { scrollToId } from '../../utils/scroll'
 import { FallingPetals } from './FallingPetals'
+import { StickerSlot } from '../../components/DecorativeSticker/StickerSlot'
 
 export function ClosingSection() {
   return (
@@ -13,8 +14,10 @@ export function ClosingSection() {
       className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-6 pb-14 pt-24 text-center"
     >
       <FallingPetals />
+      <StickerSlot section="final" />
 
       <div className="relative mx-auto max-w-xl">
+        <StickerSlot section="final" slot="message" />
         <Reveal>
           <div className="mx-auto flex items-end justify-center gap-1">
             <BotanicalSprig className="h-20 w-8 -rotate-[24deg] opacity-80" />
@@ -44,6 +47,7 @@ export function ClosingSection() {
           <div className="mt-12 flex flex-col items-center">
             <WaxSeal className="w-14 drop-shadow-[0_2px_2px_rgb(60_30_30/0.3)]" />
             <p className="mt-4 font-hand text-[1.7rem] leading-tight text-cafe">{closing.signature}</p>
+            <p className="mt-1 font-hand text-[2.1rem] leading-none text-vino">— {site.author}</p>
             <p className="mt-1 font-display text-lg tracking-[0.3em] text-tinta-oscura">{site.year}</p>
           </div>
         </Reveal>

@@ -1,18 +1,23 @@
 import { motion, useInView } from 'motion/react'
-import { useRef } from 'react'
+import { useRef, type ReactNode } from 'react'
 import { PressedFlower, Postmark, WildflowerSprig } from '../DecorativeElements'
 
 interface FinalLetterProps {
   greeting: string
   paragraphs: readonly string[]
   signature: string
+  author: string
   year: number
+  /** Decoraciones alrededor del papel. */
+  letterOverlay?: ReactNode
+  /** Decoración junto a la firma. */
+  signatureOverlay?: ReactNode
 }
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
 /** Carta sobre papel antiguo; cada párrafo aparece al llegar a él. */
-export function FinalLetter({ greeting, paragraphs, signature, year }: FinalLetterProps) {
+export function FinalLetter({ greeting, paragraphs, signature, author, year, letterOverlay, signatureOverlay }: FinalLetterProps) {
   const signRef = useRef<HTMLDivElement>(null)
   const signed = useInView(signRef, { once: true, amount: 0.8 })
 
@@ -53,7 +58,8 @@ export function FinalLetter({ greeting, paragraphs, signature, year }: FinalLett
           ))}
         </div>
 
-        <div ref={signRef} className="mt-12 flex flex-col items-end pr-1">
+        <div ref={signRef} className="relative mt-12 flex flex-col items-end pr-1">
+          {signatureOverlay}
           <motion.p
             className="font-hand text-[2.4rem] leading-none text-vino sm:text-5xl"
             initial={{ opacity: 0 }}
@@ -62,10 +68,21 @@ export function FinalLetter({ greeting, paragraphs, signature, year }: FinalLett
           >
             {signature}
           </motion.p>
-          <svg viewBox="0 0 220 30" className="mt-1 w-44 sm:w-52" aria-hidden="true">
+          <motion.p
+            className="mt-2 font-hand text-[2.9rem] leading-none text-cafe sm:text-[3.4rem]"
+            initial={{ opacity: 0 }}
+            animate={signed ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 1.4, delay: 0.5, ease: 'easeOut' }}
+          >
+            {author}{' '}
+            <span className="text-[#93505a]" role="img" aria-label="corazón">
+              {'<3'}
+            </span>
+          </motion.p>
+          <svg viewBox="0 0 220 30" className="-mt-1 w-40 sm:w-48" aria-hidden="true">
             <path
               className={`ink-draw ${signed ? 'is-drawn' : ''}`}
-              style={{ ['--len' as string]: 260, animationDelay: '.6s' }}
+              style={{ ['--len' as string]: 260, animationDelay: '1.1s' }}
               d="M6 18 C40 8 70 24 104 16 C132 10 150 8 170 14 C186 19 196 22 214 10"
               fill="none"
               stroke="#783e46"
@@ -78,6 +95,7 @@ export function FinalLetter({ greeting, paragraphs, signature, year }: FinalLett
 
         <PressedFlower className="pointer-events-none absolute -bottom-6 left-4 w-14 rotate-[-58deg] opacity-90 sm:left-10 sm:w-16" />
       </div>
+      {letterOverlay}
     </article>
   )
 }

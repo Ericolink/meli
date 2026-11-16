@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState, type ReactNode } from 'react'
 import { memoryRatio, type ImageStatus, type Memory } from '../../types/memories'
 import { PhotoModal } from '../PhotoModal/PhotoModal'
 import { Reveal } from '../Reveal/Reveal'
@@ -6,6 +6,8 @@ import { Polaroid } from './Polaroid'
 
 interface PhotoGalleryProps {
   items: Memory[]
+  /** Decoraciones superpuestas a la cuadrícula (no interactivas). */
+  overlay?: ReactNode
 }
 
 /**
@@ -20,7 +22,7 @@ function isWide(m: Memory) {
   return memoryRatio(m) >= 1.2
 }
 
-export function PhotoGallery({ items }: PhotoGalleryProps) {
+export function PhotoGallery({ items, overlay }: PhotoGalleryProps) {
   const [status, setStatus] = useState<Record<string, ImageStatus>>({})
   const [activeId, setActiveId] = useState<string | null>(null)
   const triggerRef = useRef<HTMLElement | null>(null)
@@ -44,7 +46,8 @@ export function PhotoGallery({ items }: PhotoGalleryProps) {
 
   return (
     <>
-      <ul className="mx-auto mt-16 grid max-w-[46rem] grid-flow-row-dense grid-cols-2 items-start gap-x-5 gap-y-12 px-1 sm:gap-x-8 md:mt-20 md:gap-x-14 md:gap-y-16 lg:gap-x-20">
+      <div className="relative mx-auto mt-16 max-w-[46rem] md:mt-20">
+      <ul className="grid grid-flow-row-dense grid-cols-2 items-start gap-x-5 gap-y-12 px-1 sm:gap-x-8 md:gap-x-14 md:gap-y-16 lg:gap-x-20">
         {items.map((m, i) => {
           const wide = isWide(m)
           return (
@@ -70,6 +73,8 @@ export function PhotoGallery({ items }: PhotoGalleryProps) {
           )
         })}
       </ul>
+      {overlay}
+      </div>
 
       <PhotoModal items={viewable} activeId={activeId} onClose={handleClose} onChange={setActiveId} />
     </>

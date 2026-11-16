@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { Ornament, PressedFlower, Tape, WaxSeal, WildflowerSprig } from '../../components/DecorativeElements'
 import { PhotoModal } from '../../components/PhotoModal/PhotoModal'
 import { memoryRatio, type Memory } from '../../types/memories'
+import { StickerSlot } from '../../components/DecorativeSticker/StickerSlot'
 
 function Mortarboard({ className = '' }: { className?: string }) {
   return (
@@ -135,6 +136,7 @@ export function Diploma({ name, degree, photo }: DiplomaProps) {
       <PressedFlower className="pointer-events-none absolute -bottom-8 -left-3 z-[2] w-14 rotate-[-32deg] sm:-left-8 sm:w-[4.5rem]" />
       <WildflowerSprig className="pointer-events-none absolute -right-1 top-2 w-10 rotate-[20deg] opacity-90" />
 
+      <StickerSlot section="logro" slot="diploma" />
       <figcaption className="sr-only">
         Diploma ilustrado: {name}, {degree}
       </figcaption>

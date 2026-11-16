@@ -3,6 +3,8 @@ import { FernSprig } from '../../components/DecorativeElements'
 import { MemoryCard } from '../../components/MemoryCard/MemoryCard'
 import { Reveal } from '../../components/Reveal/Reveal'
 import { qualities } from '../../data/content'
+import { StickerSlot } from '../../components/DecorativeSticker/StickerSlot'
+import type { DecorationSlot } from '../../types/decorations'
 
 export function QualitiesSection() {
   return (
@@ -18,7 +20,7 @@ export function QualitiesSection() {
     >
       <ul className="mx-auto mt-14 grid max-w-sm gap-7 sm:max-w-2xl sm:grid-cols-2 lg:max-w-none lg:grid-cols-4 lg:gap-6">
         {qualities.cards.map((c, i) => (
-          <li key={c.id}>
+          <li key={c.id} className="relative">
             <Reveal delay={i * 0.1} offset={24}>
               <MemoryCard
                 icon={c.icon}
@@ -28,6 +30,7 @@ export function QualitiesSection() {
                 index={i}
               />
             </Reveal>
+            <StickerSlot section="admiro" slot={`card-${c.id}` as DecorationSlot} />
           </li>
         ))}
       </ul>

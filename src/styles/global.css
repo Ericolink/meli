@@ -346,6 +346,57 @@
     cursor: pointer;
   }
 
+  /* Stickers y decoraciones (posición distinta en móvil y escritorio) */
+  .deco {
+    --deco-w: var(--m-w);
+    position: absolute;
+    display: block;
+    width: var(--m-w);
+    top: var(--m-top, auto);
+    right: var(--m-right, auto);
+    bottom: var(--m-bottom, auto);
+    left: var(--m-left, auto);
+  }
+  @media (min-width: 768px) {
+    .deco {
+      --deco-w: var(--d-w);
+      width: var(--d-w);
+      top: var(--d-top, auto);
+      right: var(--d-right, auto);
+      bottom: var(--d-bottom, auto);
+      left: var(--d-left, auto);
+    }
+  }
+  .deco-shadow {
+    filter: drop-shadow(0 1px 1px rgb(85 72 61 / 0.22)) drop-shadow(0 5px 6px rgb(85 72 61 / 0.16));
+  }
+  .deco-card {
+    padding: 6%;
+    background: #fbf9f4;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgb(85 72 61 / 0.18), 0 8px 16px -8px rgb(85 72 61 / 0.4);
+  }
+  /* Movimiento continuo: duración/retraso/amplitud distintos por sticker (variables CSS) */
+  .deco-loop {
+    animation-duration: var(--deco-dur, 4s);
+    animation-delay: var(--deco-delay, 0s);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    will-change: transform;
+  }
+  .deco-loop--float {
+    animation-name: deco-float;
+  }
+  .deco-loop--sway {
+    transform-origin: 50% 85%;
+    animation-name: deco-sway;
+  }
+  .deco-loop--drift {
+    transform-origin: 50% 70%;
+    animation-name: deco-drift;
+  }
+
   /* Línea de tinta que se dibuja */
   .ink-draw {
     stroke-dasharray: var(--len, 400);
@@ -375,6 +426,7 @@
   }
   .ambient,
   .petal,
+  .deco-loop,
   .eq.is-playing > span {
     animation: none !important;
   }

@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import { Ornament } from '../DecorativeElements'
 import { Reveal } from '../Reveal/Reveal'
+import type { ChapterId } from '../../data/content'
+import { StickerSlot } from '../DecorativeSticker/StickerSlot'
 
 interface ChapterSectionProps {
   id: string
@@ -35,6 +37,7 @@ export function ChapterSection({
       className={`relative overflow-x-clip scroll-mt-4 px-5 py-24 sm:px-8 md:py-32 ${className}`}
     >
       {decoration}
+      <StickerSlot section={id as ChapterId} />
       <div className="relative mx-auto max-w-5xl">
         <header className="mx-auto max-w-2xl text-center">
           {numeral && (

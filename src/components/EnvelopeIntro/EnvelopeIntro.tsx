@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { BotanicalSprig, WaxSeal, WildflowerSprig } from '../DecorativeElements'
 
 export type EnvelopeState = 'closed' | 'opening' | 'open'
@@ -12,6 +12,8 @@ interface EnvelopeIntroProps {
   onRequestOpen: () => void
   /** Se llama cuando la carta terminó de salir del sobre. */
   onOpened: () => void
+  /** Decoraciones alrededor del sobre. */
+  overlay?: ReactNode
 }
 
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -26,6 +28,7 @@ export function EnvelopeIntro({
   cardNote,
   onRequestOpen,
   onOpened,
+  overlay,
 }: EnvelopeIntroProps) {
   const reduce = useReducedMotion()
   const [flapOpen, setFlapOpen] = useState(false)
@@ -41,6 +44,7 @@ export function EnvelopeIntro({
       {/* Flores secas asomando detrás del sobre */}
       <BotanicalSprig className="absolute -left-[9%] bottom-[-6%] z-0 w-[22%] -rotate-[28deg] opacity-90" />
       <WildflowerSprig className="absolute -right-[7%] bottom-[18%] z-0 w-[20%] rotate-[24deg] opacity-90" />
+      {overlay}
 
       <div
         className="envelope-scene relative z-[1] aspect-[34/22] w-full"

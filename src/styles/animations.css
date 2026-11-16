@@ -124,6 +124,33 @@
   }
 }
 
+@keyframes deco-float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(var(--deco-amp, 7px) * -1));
+  }
+}
+
+@keyframes deco-sway {
+  from {
+    transform: rotate(calc(var(--deco-tilt, 3deg) * -1));
+  }
+  to {
+    transform: rotate(var(--deco-tilt, 3deg));
+  }
+}
+
+@keyframes deco-drift {
+  from {
+    transform: translateY(0) rotate(calc(var(--deco-tilt, 3deg) * -0.7));
+  }
+  to {
+    transform: translateY(calc(var(--deco-amp, 7px) * -0.85)) rotate(calc(var(--deco-tilt, 3deg) * 0.7));
+  }
+}
+
 @keyframes cue {
   0%,
   100% {

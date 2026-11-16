@@ -6,6 +6,7 @@ import { FernSprig, PressedFlower } from '../../components/DecorativeElements'
 import { site, welcome } from '../../data/content'
 import { useAudio } from '../../hooks/useAudio'
 import { scrollToId } from '../../utils/scroll'
+import { StickerSlot } from '../../components/DecorativeSticker/StickerSlot'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -48,6 +49,7 @@ export function WelcomeSection({ nextId }: WelcomeSectionProps) {
       {/* Decoración de esquina */}
       <PressedFlower className="pointer-events-none absolute -left-6 top-6 w-20 -rotate-[24deg] opacity-60 sm:left-6 sm:w-28" />
       <FernSprig className="pointer-events-none absolute -right-4 top-10 w-16 rotate-[18deg] opacity-60 sm:right-10 sm:w-24" />
+      <StickerSlot section="bienvenida" />
 
       <motion.p
         className="chapter-kicker"
@@ -89,6 +91,7 @@ export function WelcomeSection({ nextId }: WelcomeSectionProps) {
           cardNote={welcome.cardNote}
           onRequestOpen={open}
           onOpened={handleOpened}
+          overlay={<StickerSlot section="bienvenida" slot="envelope" />}
         />
       </motion.div>
 

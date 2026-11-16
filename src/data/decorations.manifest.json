@@ -1,0 +1,74 @@
+[
+  {
+    "id": "animal-crossing-canelita",
+    "category": "animal-crossing",
+    "source": "public/decorations/animal-crossing/canelita.gif",
+    "kind": "cutout",
+    "src": "/decorations/processed/animal-crossing-canelita.webp",
+    "width": 381,
+    "height": 516
+  },
+  {
+    "id": "animal-crossing-image",
+    "category": "animal-crossing",
+    "source": "public/decorations/animal-crossing/image.png",
+    "kind": "cutout",
+    "src": "/decorations/processed/animal-crossing-image.webp",
+    "width": 288,
+    "height": 554
+  },
+  {
+    "id": "anime-image-copy-2",
+    "category": "anime",
+    "source": "public/decorations/anime/image copy 2.png",
+    "kind": "cutout",
+    "src": "/decorations/processed/anime-image-copy-2.webp",
+    "width": 424,
+    "height": 554
+  },
+  {
+    "id": "anime-image-copy-3",
+    "category": "anime",
+    "source": "public/decorations/anime/image copy 3.png",
+    "kind": "cutout",
+    "src": "/decorations/processed/anime-image-copy-3.webp",
+    "width": 471,
+    "height": 422
+  },
+  {
+    "id": "anime-image-copy",
+    "category": "anime",
+    "source": "public/decorations/anime/image copy.png",
+    "kind": "cutout",
+    "src": "/decorations/processed/anime-image-copy.webp",
+    "width": 440,
+    "height": 346
+  },
+  {
+    "id": "anime-image",
+    "category": "anime",
+    "source": "public/decorations/anime/image.png",
+    "kind": "cutout",
+    "src": "/decorations/processed/anime-image.webp",
+    "width": 403,
+    "height": 554
+  },
+  {
+    "id": "object-image-copy",
+    "category": "object",
+    "source": "public/decorations/objects/image copy.png",
+    "kind": "cutout",
+    "src": "/decorations/processed/object-image-copy.webp",
+    "width": 542,
+    "height": 524
+  },
+  {
+    "id": "object-image",
+    "category": "object",
+    "source": "public/decorations/objects/image.png",
+    "kind": "cutout",
+    "src": "/decorations/processed/object-image.webp",
+    "width": 447,
+    "height": 414
+  }
+]

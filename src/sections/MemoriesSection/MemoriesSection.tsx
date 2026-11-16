@@ -3,6 +3,7 @@ import { PressedFlower, WildflowerSprig } from '../../components/DecorativeEleme
 import { PhotoGallery } from '../../components/PhotoGallery/PhotoGallery'
 import { memoriesIntro } from '../../data/content'
 import { sortedMemories } from '../../data/memories'
+import { StickerSlot } from '../../components/DecorativeSticker/StickerSlot'
 
 export function MemoriesSection() {
   return (
@@ -19,7 +20,7 @@ export function MemoriesSection() {
         </>
       }
     >
-      <PhotoGallery items={sortedMemories} />
+      <PhotoGallery items={sortedMemories} overlay={<StickerSlot section="recuerdos" slot="gallery" />} />
     </ChapterSection>
   )
 }

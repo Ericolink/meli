@@ -8,6 +8,8 @@
 
 export const site = {
   name: 'Melissa',
+  /** Quien firma la carta y la pantalla final. */
+  author: 'Eric',
   projectTitle: 'Un mundo por descubrir',
   mainPhrase:
     'Hay personas que tienen una manera especial de hacer del mundo un lugar más bonito. Espero que nunca pierdas esa parte de ti.',
@@ -42,7 +44,7 @@ export const chapters = [
 export type ChapterId = (typeof chapters)[number]['id']
 
 export const welcome = {
-  title: 'Melissa, esto es para ti.',
+  title: 'Para Melissa',
   subtitle:
     'A veces hay momentos que merecen algo más que un simple mensaje de felicitación. Preparé algo pequeño para ti.',
   button: 'Abrir mi regalo',

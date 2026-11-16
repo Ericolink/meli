@@ -3,6 +3,7 @@ import { BotanicalSprig, Tape } from '../../components/DecorativeElements'
 import { Reveal } from '../../components/Reveal/Reveal'
 import { future } from '../../data/content'
 import { ListeningScene } from './ListeningScene'
+import { StickerSlot } from '../../components/DecorativeSticker/StickerSlot'
 
 export function FutureSection() {
   return (
@@ -18,6 +19,7 @@ export function FutureSection() {
             </div>
           </div>
           <BotanicalSprig className="pointer-events-none absolute -bottom-10 -right-2 h-24 w-10 rotate-[32deg] opacity-80 sm:-right-6" />
+          <StickerSlot section="mundo" slot="illustration" />
           <figcaption className="mt-5 text-center font-hand text-[1.45rem] leading-tight text-tinta-oscura sm:text-2xl">
             {future.illustrationCaption}
           </figcaption>

@@ -46,6 +46,26 @@ Si un archivo no existe, se muestra un marco decorativo con una flor prensada en
 
 **Orientación:** si una foto aparece girada, corrige el archivo (por ejemplo `convert foto.jpeg -rotate 180 foto.jpeg`).
 
+## Stickers y decoraciones
+
+1. Copia la imagen en `public/decorations/<categoría>/` (`flowers`, `animal-crossing`, `anime`, `objects`, `misc`).
+2. Ejecuta `npm run decorations` (requiere Python 3 con Pillow y numpy). El script:
+   - Recorta el fondo si es uniforme (blanco, negro o de un color liso). Conserva los blancos interiores, como los ojos, y elimina el halo.
+   - Añade un borde blanco tipo sticker a los personajes y objetos.
+   - Optimiza a WebP con un lado máximo de 520 px y lo guarda en `public/decorations/processed/`. Los originales no se tocan.
+   - Si el fondo no es uniforme, no recorta la imagen y la muestra como una tarjetita de papel.
+   - Deja un informe en `docs/decorations-report.md`.
+3. Añade una entrada en `src/data/decorations.ts`:
+   - `section`: dónde aparece.
+   - `slot`: la zona concreta (`section`, `envelope`, `diploma`, `gallery`, `card-<id>`, `illustration`, `letter`, `signature`, `message`).
+   - `position` y `mobile`: la posición en escritorio y en móvil (`false` la oculta en móvil).
+   - `tier`: el tamaño, con tres niveles. `principal` (6,2→9 rem), `secundario` (4,6→6,2 rem) y `detalle` (3,2→4,1 rem: flores, estrellas, corazones).
+   - `rotation`: la inclinación.
+   - `enter`: la animación de entrada (`pop`, `stick`, `fade`).
+   - `animation`: el movimiento continuo (`float`, `sway`, `drift`).
+
+Los stickers no reciben clics, se cargan al acercarse a la pantalla y quedan quietos si el sistema tiene activado «reducir movimiento». Cada uno tiene su propia duración y su propio retraso, así que no se mueven sincronizados.
+
 ## Cambiar textos
 
 Todos los textos están en `src/data/content.ts`, agrupados por capítulo (`welcome`, `graduation`, `memoriesIntro`, `qualities`, `future`, `letter`, `closing`). Cada párrafo es un elemento del arreglo `paragraphs`.
@@ -58,9 +78,10 @@ src/
                 MemoryCard, MusicPlayer, ProgressIndicator, FinalLetter,
                 DecorativeElements, Reveal
   context/      AudioProvider (audio global) y su contexto
+  components/DecorativeSticker/  DecorativeSticker + StickerSlot
   sections/     Welcome (+Prelude), Graduation (+Diploma), Memories, Qualities,
                 Future (+ListeningScene: ilustración SVG), Letter, Closing (+FallingPetals)
-  data/         content.ts, memories.ts
+  data/         content.ts, memories.ts, decorations.ts (+ manifest generado)
   hooks/        useScrollProgress.ts, useAudio.ts
   styles/       global.css (tokens, papel, componentes), animations.css
   types/        memories.ts
@@ -68,6 +89,8 @@ src/
 public/
   recuerdos/    fotografías
   audio/        background.mp3 (canción)
+  decorations/  imágenes originales por categoría + processed/
+scripts/        process-decorations.py
   robots.txt, _headers, favicon.svg
 vercel.json
 ```
